@@ -4,6 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_many :books
+  has_many :favorites
+  has_many :book_comments
   has_one_attached :profile_image
   
   validates :name,uniqueness: true

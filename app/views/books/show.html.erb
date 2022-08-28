@@ -15,6 +15,8 @@
               <td><%= link_to @book_show.title,book_path(@book_show.id) %></td>
           
               <td><%= @book_show.body %></td>
+
+              <td><%= render 'favorites/favorite',book: @book_show %></td>
               
               <% if @book_show.user.id==current_user.id %>
                 <td><%= link_to "Edit",edit_book_path(@book_show.id),class: 'btn btn-success' %></td>
@@ -24,6 +26,12 @@
             </tr>
           
       </table>
+      <div>
+        <%= render 'book_comments/index',book: @book_show %>
+      </div>
+      <div>
+        <%= render 'book_comments/form',book: @book_show %>
+      </div>
     </div>
   </div>
 </div>
