@@ -6,6 +6,19 @@ class User < ApplicationRecord
   has_many :books
   has_many :favorites
   has_many :book_comments
+
+  # RelationShipに定義されている仮想テーブルの「follower」が子要素であること(外部キーをfollower_idとユーザが一致しているものとする)
+  has_many :follower,class_name: "Relationship",foreign_key: "follower_id", dependent: :destroy 
+  # RelationShipに定義されている仮想テーブルの「followed」が子要素であること(外部キーをfollowed_idとユーザが一致しているものとする)
+  has_many :followed,class_name: "Relationship",foreign_key: "followed_id", dependent: :destroy 
+
+  # following_userと入力すると子要素であるfollowerを飛ばして,followedを取得する。
+  has_many :following_user, through: "follower",source: "followed"
+
+  ## followed_userと入力すると子要素であるfollowedを飛ばして、followerを取得する。
+  
+  has_many :followed_user,through: "followed",source: "follower"
+
   has_one_attached :profile_image
   
   validates :name,uniqueness: true
@@ -19,4 +32,9 @@ class User < ApplicationRecord
     end
     profile_image.variant(resize_to_limit: [width, height]).processed
   end
+
+  def follow_confirm?(follower_id,followed_id)
+    Relationship.exists?(follower_id: follower_id ,followed_id: followed_id)
+  end
+
 end

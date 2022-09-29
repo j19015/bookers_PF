@@ -1,0 +1,25 @@
+<h1>follower(フォローしてきている人)</h1>
+<div class="ml-5">
+  <table class="table">
+    <thead>
+      <tr>
+      <th>image</th>
+      <th>名前</th>
+      <th>フォロー数</th>
+      <th>フォロワー数</th>
+      <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @followers_users.each do |user| %>
+      <tr>
+        <td><%= image_tag user.get_profile_image(100,100) %></td>
+        <td><%= user.name %></td>
+        <td><%= user.following_user.count %></td>
+        <td><%= user.followed_user.count %></td>
+        <td><%= link_to 'show',user_path(user),class:"btn btn-primary"%></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
