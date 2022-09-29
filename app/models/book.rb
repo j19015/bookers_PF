@@ -9,4 +9,17 @@ class Book < ApplicationRecord
   def favorite_by?(user,book)
     favorites.exists?(user_id: user.id,book_id: book.id)
   end
+
+  def search_book(method,text)
+    if method==1 #完全一致
+      Book.where('title like ?',"#{text}")
+    elsif method==2#前方一致
+      Book.where('title like ?',"#{text}%")
+    elsif method==3#後方一致
+      Book.where('title like ?',"%#{text}")
+    elsif method==4#部分一致
+      Book.where('title like ?',"%#{text}%")
+    end
+  end
+
 end

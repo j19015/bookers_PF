@@ -1,9 +1,9 @@
 <% if book.favorite_by?(current_user,book) %>
-  <%= link_to book_favorites_path(book),method: :delete do %>
+  <%= link_to book_favorites_path(book),method: :delete,remote: true do %>
     <i class="fas fa-heart"></i>
   <% end %>
 <% else %>
-  <%= link_to book_favorites_path(book),method: :post do %>
+  <%= link_to book_favorites_path(book),method: :post,remote: true  do %>
     <i class="fas fa-heart text-secondary"></i>
   <% end %>
 <% end %>

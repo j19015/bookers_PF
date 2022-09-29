@@ -37,4 +37,15 @@ class User < ApplicationRecord
     Relationship.exists?(follower_id: follower_id ,followed_id: followed_id)
   end
 
+  def search_user(method,text)
+    if method==1 #完全一致
+      User.where('name like ?',"#{text}")
+    elsif method==2#前方一致
+      User.where('name like ?',"#{text}%")
+    elsif method==3#後方一致
+      User.where('name like ?',"%#{text}")
+    elsif method==4#部分一致
+      User.where('name like ?',"%#{text}%")
+    end
+  end
 end
