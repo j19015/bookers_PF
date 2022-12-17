@@ -1,7 +1,23 @@
 class BooksController < ApplicationController
   before_action :currect_user,only:[:edit, :update]
   def index
-    @books=Book.all
+    #変数toにTimeメソッドを用いて今日の最後日時を計算して挿入
+    to=Time.current.at_end_of_day
+    #変数fromにTimeメソッドを用いて今日の0時の日時を挿入
+    from=(to-6.day).at_beginning_of_day
+    #fromからtoまでで一週間分のデータを取得
+    #@books = Book.where(created_at: from...to)
+    #孫モデルのいいねをしたユーザの情報まで同時に取得。
+    @books = Book.includes(:favorited_users, :favorites)
+    .sort{
+      |a,b|
+      #自分で書いた記述
+      b.favorites.where(created_at: from...to).size<=>
+      a.favorites.where(created_at: from...to).size
+      #下記は記事の記述だが、間違っている説が濃厚である。
+      #b.favorited_users.includes(:favorites).where(created_at: from...to).size <=> 
+      #a.favorited_users.includes(:favorites).where(created_at: from...to).size
+    }
     @user=current_user
     @book=Book.new
   end

@@ -2,6 +2,8 @@ class Book < ApplicationRecord
   belongs_to :user
   has_many :favorites
   has_many :book_comments
+  #いいねの多い順に表示するためにbookから簡単にいいねしたユーザの情報を取得できるようにしておく
+  has_many :favorited_users,through: :favorites,source: :user
   validates :title,presence: true
   validates :body,presence: true
   validates :body,length: {maximum: 200}
