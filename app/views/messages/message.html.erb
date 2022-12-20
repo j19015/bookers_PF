@@ -1,0 +1,18 @@
+<div class="container">
+  <div class= "row">
+    <div class="col-md-1 bg-secondary"></div>
+    <div class="col-md-10" id="messages">
+      <%= render 'messages',send_messages:@send_messages,receive_messages:@receive_messages%>
+    </div>
+    <div class="col-md-1 bg-secondary"></div>
+  </div>
+  <div class="row">
+    <%= form_with model:@message ,url:messages_path,method: :post,local:false do |f| %>
+      <div class="d-flex">
+        <%= f.text_field :chat %>
+        <%= f.hidden_field :receive_user_id,value: params[:id]%>
+        <%= f.submit "送信" ,class:"btn btn-secondary"%>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,12 @@
+<div class="row">
+  <div class="col-md-6 bg-danger">
+    <% send_messages.each do |message|%>
+      <%= message.chat %><br>
+    <% end %>
+  </div>
+  <div class="col-md-6 bg-success">
+    <% receive_messages.each do |message|%>
+    <%= message.chat %><br>
+    <% end %>
+  </div>
+</div>

@@ -13,6 +13,8 @@ Rails.application.routes.draw do
     resource :favorites,only: [:create,:destroy]
     resources :book_comments,only: [:create,:destroy]
   end
+  get 'messages/:id'=>"messages#message",as:"message"
+  post 'messages'=> "messages#create",as:"messages"
   post 'searches'=>"searches#search",as: 'search'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
