@@ -1,12 +1,18 @@
-<div class="row">
-  <div class="col-md-6 bg-danger">
+<div class="row bg-dark flex-nowrap pt-1">
+  <div class="col-md-6">
     <% send_messages.each do |message|%>
-      <%= message.chat %><br>
+      <div class="mb-1 d-flex">
+        <%= image_tag message.send_user.get_profile_image(50,50),class:"rounded mr-2"%>
+        <div class="rounded bg-success text-black text-break mw-100"><%= message.chat %></div>
+      </div>
     <% end %>
   </div>
-  <div class="col-md-6 bg-success">
+  <div class="col-md-6 ">
     <% receive_messages.each do |message|%>
-    <%= message.chat %><br>
+      <div class="d-flex flex-row-reverse mb-1">
+        <div><%= image_tag message.send_user.get_profile_image(50,50),class:"rounded ml-2"%></div>
+        <div class="rounded bg-secondary text-white text-break mw-100"><%= message.chat %></div>
+      </div>
     <% end %>
   </div>
 </div>
