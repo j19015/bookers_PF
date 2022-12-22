@@ -21,6 +21,11 @@
           <th><%= link_to user.followed_user.count,user_followers_path(user.id) %></th>
         </tr>
       </table>
+      
+       <%= render 'relationships/follow',user: user %>
+       <% if user.id!=current_user && user.follow_confirm?(current_user.id,user.id)&&user.follow_confirm?(user.id,current_user.id) %>
+        <%= link_to "chatする",message_path(user.id)%>
+       <% end %>
 
       <%= link_to edit_user_path(user.id) ,class:"btn btn-outline-secondary btn-block" do %>
         <i class="fas fa-user-cog"></i>
