@@ -1,1 +1,6 @@
-$("#messages").html("<%= j(render 'messages/messages',send_messages:@send_messages,receive_messages:@receive_messages) %>");
+$("#messages").html("<%= j(render 'messages/messages',messages: @messages) %>");
+$(function() {
+  let target = document.getElementById('scroll-inner');
+  console.log(target.scrollIntoView(false));
+  console.log("実行はされてるよ");
+});

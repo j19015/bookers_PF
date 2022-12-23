@@ -12,6 +12,8 @@ Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
 
+require ('user/scroll')
+
 import "jquery";
 import "popper.js";
 import "bootstrap";
