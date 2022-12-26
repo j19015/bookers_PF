@@ -2,19 +2,19 @@ Rails.application.routes.draw do
   get 'searches/search'
   get 'serches/search'
   root to: 'homes#top'
-  get '/home/about'=>"homes#about",as: "about"
+  get '/home/about' => 'homes#about', as: 'about'
   devise_for :users
-  resources :users,only: [:index, :show, :update, :edit] do
-    resource :relationships,only:[:create,:destroy]
+  resources :users, only: %i[index show update edit] do
+    resource :relationships, only: %i[create destroy]
     get 'followings' => 'relationships#followings', as: 'followings'
-  	get 'followers' => 'relationships#followers', as: 'followers'
+    get 'followers' => 'relationships#followers', as: 'followers'
   end
   resources :books do
-    resource :favorites,only: [:create,:destroy]
-    resources :book_comments,only: [:create,:destroy]
+    resource :favorites, only: %i[create destroy]
+    resources :book_comments, only: %i[create destroy]
   end
-  get 'messages/:id'=>"messages#message",as:"message"
-  post 'messages'=> "messages#create",as:"messages"
-  post 'searches'=>"searches#search",as: 'search'
+  get 'messages/:id' => 'messages#message', as: 'message'
+  post 'messages' => 'messages#create', as: 'messages'
+  post 'searches' => 'searches#search', as: 'search'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
