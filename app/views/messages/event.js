@@ -1,5 +1,3 @@
-$("#messages").html("<%= j(render 'messages/messages',messages: @messages) %>")
-$("#message_field").val('');
 var target = document.getElementById('scroll-inner');
 var imagesLoadListener = (function() {
  

@@ -11,9 +11,8 @@ class MessagesController < ApplicationController
       @messages=Message.where(send_user_id:current_user.id,receive_user_id:params[:message][:receive_user_id]).or(@receive_messages=Message.where(send_user_id:params[:message][:receive_user_id],receive_user_id:current_user.id)).order(:created_at)
     else
       @message=Message.new
-      @send_messages=Message.where(send_user_id:current_user.id,receive_user_id:params[:id])
-      @receive_messages=Message.where(send_user_id:params[:id],receive_user_id:current_user.id)
-      redirect_back fallback_location: root_path
+      @messages=Message.where(send_user_id:current_user.id,receive_user_id:params[:message][:receive_user_id]).or(@receive_messages=Message.where(send_user_id:params[:message][:receive_user_id],receive_user_id:current_user.id)).order(:created_at)
+      render :message
     end
   end
 

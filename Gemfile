@@ -59,3 +59,6 @@ gem 'devise'
 gem 'net-smtp'
 
 gem 'pry-rails'
+
+gem 'rubocop', require:false
+gem 'rubocop-rails', require:false
