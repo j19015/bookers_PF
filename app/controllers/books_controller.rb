@@ -37,6 +37,7 @@ class BooksController < ApplicationController
     @book = Book.new
     @book_show = Book.find(params[:id])
     @user = @book_show.user
+    impressionist(@book_show, nil, unique: [:user_id]) 
   end
 
   def edit

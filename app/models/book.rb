@@ -8,6 +8,9 @@ class Book < ApplicationRecord
   validates :body, presence: true
   validates :body, length: { maximum: 200 }
 
+  #PV数
+  is_impressionable counter_cache: true
+
   def favorite_by?(user, book)
     favorites.exists?(user_id: user.id, book_id: book.id)
   end
