@@ -24,6 +24,10 @@ class UsersController < ApplicationController
     @user=User.find(params[:id])
   end
 
+  def day_search_book
+    @cnt=User.find(params[:id]).books.where(created_at: params[:created_at].to_date.beginning_of_day..params[:created_at].to_date.end_of_day).count
+  end
+
   private
 
   def user_params
