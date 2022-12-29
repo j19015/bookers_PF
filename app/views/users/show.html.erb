@@ -33,6 +33,33 @@
         </tr>
         <% end %>
       </table>
+      <div>
+        <h2>投稿数の前日比・前週比</h2>
+        <table class="table table-bordered">
+          <tr class="table-secondary">
+            <th>今日の投稿数</th>
+            <th>前日の投稿数</th>
+            <th>前日比</th>
+          </tr>
+          <tr>
+            <td><%= @user.books.created_today %></td>
+            <td><%= @user.books.created_yesterday %></td>
+            <td><%= (@user.books.created_today - @user.books.created_yesterday)*100 %>%</td>
+          </tr>
+        </table>
+        <table class="table table-bordered">
+          <tr class="table-secondary">
+            <th>今週の投稿数</th>
+            <th>先週の投稿数</th>
+            <th>前週比</th>
+          </tr>
+          <tr>
+            <td><%= @user.books.created_this_week %></td>
+            <td><%= @user.books.created_last_week %></td>
+            <td><%= (@user.books.created_this_week- @user.books.created_last_week)*100 %>%</td>
+          </tr>
+        </table >
+      </div>
     </div>
   </div>
 </div>
