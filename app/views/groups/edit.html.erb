@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-8 col-lg-5 px-sm-0 mx-auto">
+      <h1>Create Group</h1>
+        <% if @group.errors.any? %>
+          <h2 class="text-danger"><%= @group.errors.count %>errors prohibited this obj from being saved:</h2>
+          <ul>
+          <% @group.errors.full_messages.each do |message| %>
+            <li class="text-danger"><%= message %></li>
+          <% end %>
+          </ul>
+        <% end %>
+      <%= form_with model: @group ,method: :patch do |f| %>
+        <div></div>
+        <h3>グループ名</h3>
+        <%= f.text_field :name %>
+        
+        <h3>紹介文</h3>
+        <%= f.text_area :introduction %><br/>
+
+        <h3>グループ画像</h3>
+        <%= f.file_field :image, placeholder: "プロフィール画像", accept: "image/*" %><br>
+        
+        <%= f.submit 'Update Group' ,class:"btn btn-primary mt-3" %>
+        
+      <% end %>
+    </div>
+  </div>
+
+</div>
