@@ -21,8 +21,6 @@ class User < ApplicationRecord
 
   has_one_attached :profile_image
 
-  belongs_to :tag
-  
   validates :name,uniqueness: true
   validates :name,length: {in:2..20}
   validates :introduction,length: {maximum: 50}
