@@ -20,6 +20,8 @@ class User < ApplicationRecord
   has_many :followed_user,through: "followed",source: "follower"
 
   has_one_attached :profile_image
+
+  belongs_to :tag
   
   validates :name,uniqueness: true
   validates :name,length: {in:2..20}

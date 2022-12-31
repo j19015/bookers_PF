@@ -1,7 +1,13 @@
 class BooksController < ApplicationController
   before_action :currect_user,only:[:edit, :update]
   def index
-    @books=Book.all
+    if params[:method]=="0"
+      @books=Book.order(created_at: "DESC")
+    elsif params[:method]=="1"
+      @books=Book.order(star: "DESC")
+    else
+     @books=Book.all
+    end
     @user=current_user
     @book=Book.new
   end
