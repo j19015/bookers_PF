@@ -19,7 +19,23 @@
               <td class="favorite-btn-<%= @book_show.id %>">
                 <%= render 'favorites/favorite',book: @book_show %>
               </td>
-              
+
+              <td>
+                <div id="star-show"></div>
+                <script>
+                  $('#star-show').empty(); 
+                  var elem = document.getElementById('star-show');
+                  var opt = {  
+                    starOn: "<%= asset_path('star-on.png') %>",
+                    starOff: "<%= asset_path('star-off.png') %>",
+                    starHalf: "<%= asset_path('star-half.png') %>",
+                    readOnly: true, 
+                    score: Number(' <%= @book_show.star %>'),
+                  };
+                  raty(elem,opt);
+
+                </script>
+               </td> 
               <% if @book_show.user.id==current_user.id %>
                 <td><%= link_to "Edit",edit_book_path(@book_show.id),class: 'btn btn-success' %></td>
                 

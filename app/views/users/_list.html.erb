@@ -35,6 +35,22 @@
 
         <h4>Opinion</h4>
         <%= f.text_area :body %>
+
+        <div class="form-group row mt-3" id="star">
+          <%= f.label :star,'評価 ', class:'col-md-3 col-form-label' %>
+        </div>
+        <script>
+          var elem = document.getElementById('star');
+          var opt = {  
+            starOn: "<%= asset_path('star-on.png') %>",
+            starOff: "<%= asset_path('star-off.png') %>",
+            starHalf: "<%= asset_path('star-half.png') %>",
+            scoreName: 'book[star]',  
+          };
+          raty(elem,opt);
+        </script>
+
         <%= f.submit 'Create Book',class:"btn btn-success",style:"margin:5px 0"%>
+
       <% end %>
     </div>

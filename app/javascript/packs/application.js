@@ -18,3 +18,10 @@ import "bootstrap";
 import "../stylesheets/application" 
 
 import '@fortawesome/fontawesome-free/js/all'
+
+import Raty from "raty.js"
+window.raty = function(elem,opt){
+  var raty =  new Raty(elem,opt)
+  raty.init();
+  return raty;
+}
