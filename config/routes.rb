@@ -15,6 +15,8 @@ Rails.application.routes.draw do
   end
 
   resources :groups do
+    get 'mail/new'=>"groups#new_mail",as:"new_mail"
+    post 'mail/send_mail'=> "groups#send_mail",as:"send_mail"
     resource :group_users
   end
   post 'searches'=>"searches#search",as: 'search'

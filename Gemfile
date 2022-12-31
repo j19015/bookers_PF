@@ -60,4 +60,4 @@ gem 'net-smtp'
 
 gem 'pry-rails'
 
-gem 'dotenv'
+gem 'dotenv-rails'

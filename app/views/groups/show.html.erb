@@ -39,7 +39,12 @@
             <% else %>
               <%= link_to "join this group",group_group_users_path(@group.id),method: :post,class:"btn btn-success"%>
             <% end %>
-            </td>
+          </td>
+          <td>
+            <% if @group.owner_id==current_user.id %>
+              <%= link_to "mail",group_new_mail_path(@group.id),class:"btn btn-secondary"%>
+            <% end %>
+          </td>
         </tr>
       </table>
     </div>

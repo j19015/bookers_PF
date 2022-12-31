@@ -40,14 +40,14 @@ class GroupsController < ApplicationController
 
 
   def new_mail
-    @group=Group.find(params[:id])
+    @group=Group.find(params[:group_id])
   end
 
   def send_mail
-    @group=Group.find(params[:id])
-    title=params[:title]
-    content=params[:content]
-    ContactMailer.send_mail(title,content,@group.group_user).deliver
+    @group=Group.find(params[:group_id])
+    @title=params[:title]
+    @content=params[:content]
+    UserMailer.send_mail(@title,@content,@group.group_user).deliver
   end
   private
   def group_params
