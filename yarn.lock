@@ -5757,6 +5757,11 @@
   "resolved" "https://registry.npmjs.org/range-parser/-/range-parser-1.2.1.tgz"
   "version" "1.2.1"
 
+raty-js@^4.1.0:
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/raty-js/-/raty-js-4.1.0.tgz#bfdbd4e29829eac96c359665babb53486ed90350"
+  integrity sha512-1mR50kE+/mdOseErh1pb2wRp+yx+FZfVLaeanxbfsxtB6izGquXNPI4XUnQ6u894hY0iKwztDLWG/SJTNHS3eg==
+
 "raw-body@2.5.1":
   "integrity" "sha512-qqJBtEyVgS0ZmPGdCFPWJ3FreoqvG4MVQln/kCgF7Olq95IbOp0/BWyMwbdtn4VTvkM8Y7khCQ2Xgk/tcrCXig=="
   "resolved" "https://registry.npmjs.org/raw-body/-/raw-body-2.5.1.tgz"

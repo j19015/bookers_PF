@@ -1,5 +1,6 @@
 class Book < ApplicationRecord
   belongs_to :user
+  belongs_to :tag
   has_many :favorites
   has_many :book_comments
   # いいねの多い順に表示するためにbookから簡単にいいねしたユーザの情報を取得できるようにしておく

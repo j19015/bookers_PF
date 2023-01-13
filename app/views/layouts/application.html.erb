@@ -46,6 +46,14 @@
                   <% end %>
                 </li>
 
+                <li class="nav-item">
+                  <%= form_with url:books_path,method: :get do |f| %>
+                    <%= f.hidden_field :method,value:3 %>
+                    <%= f.text_field :tag_name %>
+                    <%= f.submit "タグ検索"%>
+                  <% end %>
+                </li>
+
               <% else %>
                 <li class="nav-item">
 
