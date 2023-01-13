@@ -60,8 +60,12 @@ gem 'net-smtp'
 
 gem 'pry-rails'
 
+<<<<<<< HEAD
 gem 'rubocop', require: false
 gem 'rubocop-rails', require: false
 
 # 閲覧数に関するgem
 gem 'impressionist'
+=======
+gem 'dotenv-rails'
+>>>>>>> c_feature

@@ -13,6 +13,12 @@ Rails.application.routes.draw do
     resource :favorites, only: %i[create destroy]
     resources :book_comments, only: %i[create destroy]
   end
+
+  resources :groups do
+    get 'mail/new'=>"groups#new_mail",as:"new_mail"
+    post 'mail/send_mail'=> "groups#send_mail",as:"send_mail"
+    resource :group_users
+  end
   get 'messages/:id' => 'messages#message', as: 'message'
   post 'messages' => 'messages#create', as: 'messages'
   post 'searches' => 'searches#search', as: 'search'

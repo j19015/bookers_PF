@@ -1,0 +1,52 @@
+<div>
+  <% if @group.errors.any? %>
+    <h2 class="text-red">
+      <%= @group.errors.count %>errors prohibited this obj from being saved:
+    </h2>
+    <ul>
+    <% @group.errors.full_messages.each do |message| %>
+      <li class="text-red"><%= message %></li>
+    <% end %>
+  <% end %>
+</div>
+<div class="container px-5 px-sm-0">
+  <div class="row">
+    <%= render 'users/list',user:@user,book:@book %>
+    <div class="col-md-8 offset-md-1">
+      <h2>Group Detail</h1>
+      <table class="table table-hover table-inverse">
+        <tr>
+          <th> </th>
+          <th>グループ名</th>
+          <th>紹介文</th>
+          <th>メンバー</th>
+          <th></th>
+        </tr>
+        <tr>
+          <td><%= image_tag @group.get_image(100,100)%></td>
+          <td><%= @group.name %></td>
+          <td><%= @group.introduction %></td>
+          <td>
+            <% @group.group_user.each do |user| %>
+              <p><%=  user.name %></p>
+            <% end%>
+          </td>
+          <td>
+            <% if @group.owner_id==current_user.id %>
+              <%= link_to "edit",edit_group_path(@group.id),class:"btn btn-primary"%>
+            <% elsif current_user.group_in?(@group.id) %>
+              <%= link_to "leave this group",group_group_users_path(@group.id),method: :delete,class:"btn btn-danger"%>
+            <% else %>
+              <%= link_to "join this group",group_group_users_path(@group.id),method: :post,class:"btn btn-success"%>
+            <% end %>
+          </td>
+          <td>
+            <% if @group.owner_id==current_user.id %>
+              <%= link_to "mail",group_new_mail_path(@group.id),class:"btn btn-secondary"%>
+            <% end %>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>

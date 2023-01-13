@@ -19,6 +19,8 @@ class User < ApplicationRecord
 
   has_many :followed_user, through: 'followed', source: 'follower'
 
+  has_many :groups,class_name: "Group",foreign_key: "owner_id", dependent: :destroy 
+
   has_one_attached :profile_image
 
   validates :name, uniqueness: true
@@ -33,8 +35,16 @@ class User < ApplicationRecord
     profile_image.variant(resize_to_limit: [width, height]).processed
   end
 
-  def follow_confirm?(follower_id, followed_id)
+  def follow_confirm?(follower_id,followed_id)
     Relationship.exists?(follower_id: follower_id, followed_id: followed_id)
+  end
+
+  def group_in?(group_id)
+    GroupUser.exists?(user_id: self.id,group_id: group_id)
+  end
+
+  def group_in?(group_id)
+    GroupUser.exists?(user_id: self.id,group_id: group_id)
   end
 
   def search_user(method, text)
