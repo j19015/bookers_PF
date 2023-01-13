@@ -16,5 +16,6 @@ Rails.application.routes.draw do
   get 'messages/:id' => 'messages#message', as: 'message'
   post 'messages' => 'messages#create', as: 'messages'
   post 'searches' => 'searches#search', as: 'search'
+  post 'day_search_book'=>"users#day_search_book",as: 'day_search_book'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

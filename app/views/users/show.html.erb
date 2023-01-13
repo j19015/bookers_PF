@@ -33,6 +33,103 @@
         </tr>
         <% end %>
       </table>
+
+      <div>
+        <h2>七日間分の投稿数</h2>
+        <table class="table table-bordered">
+          <tr class="table-secondary">
+            <th>6日前</th>
+            <th>5日前</th>
+            <th>4日前</th>
+            <th>3日前</th>
+            <th>2日前</th>
+            <th>1日前</th>
+            <th>今日</th>
+          </tr>
+          <tr>
+            <% (0..6).each do |i| %>
+              <td><%= @user.books.created_ago_day(6-i) %></td>
+            <% end %>
+          </tr>
+        </table>
+        <canvas id="myChart"></canvas>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script>
+        var ctx = document.getElementById('myChart');
+        var myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['6日前','5日前','4日前','3日前','2日前','1日前','今日'],
+                datasets: [{
+                    label: '一週間の投稿数',
+                    data: ['<%= @user.books.created_ago_day(6)%>','<%= @user.books.created_ago_day(5)%>','<%= @user.books.created_ago_day(4)%>','<%= @user.books.created_ago_day(3)%>','<%= @user.books.created_ago_day(2)%>','<%= @user.books.created_ago_day(1)%>','<%= @user.books.created_today %>'],
+                    backgroundColor: [
+                        'rgba(0, 106, 182, 1.0)',
+                        'rgba(0, 106, 182, 1.0)',
+                        'rgba(0, 106, 182, 1.0))',
+                        'rgba(0, 106, 182, 1.0))',
+                        'rgba(0, 106, 182, 1.0))',
+                        'rgba(0, 106, 182, 1.0))'
+                    ],
+                    borderColor: [
+                        'rgba(0, 106, 182, 1.0)',
+                        'rgba(0, 106, 182, 1.0)',
+                        'rgba(0, 106, 182, 1.0))',
+                        'rgba(0, 106, 182, 1.0))',
+                        'rgba(0, 106, 182, 1.0))',
+                        'rgba(0, 106, 182, 1.0))'
+                    ],
+                    borderWidth: 3,
+                    lineTension: 0.3
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+        </script>
+      </div>
+      <div>
+        <h2>投稿数の前日比・前週比</h2>
+        <table class="table table-bordered">
+          <tr class="table-secondary">
+            <th>今日の投稿数</th>
+            <th>前日の投稿数</th>
+            <th>前日比</th>
+          </tr>
+          <tr>
+            <td><%= @user.books.created_today %></td>
+            <td><%= @user.books.created_yesterday %></td>
+            <td><%= (@user.books.created_today - @user.books.created_yesterday)*100 %>%</td>
+          </tr>
+        </table>
+        <table class="table table-bordered">
+          <tr class="table-secondary">
+            <th>今週の投稿数</th>
+            <th>先週の投稿数</th>
+            <th>前週比</th>
+          </tr>
+          <tr>
+            <td><%= @user.books.created_this_week %></td>
+            <td><%= @user.books.created_last_week %></td>
+            <td><%= (@user.books.created_this_week- @user.books.created_last_week)*100 %>%</td>
+          </tr>
+        </table >
+      </div>
+      <div>
+        <%= form_with model:nil,url:day_search_book_path,method: :post,local:false do |f|%>
+          <%= f.date_field :created_at %>
+          <%= f.hidden_field :id ,value:@user.id %>
+          <%= f.submit '検索' ,class:"btn btn-primary"%>
+        <% end %>
+        <div id='day_search_book'>
+          <%= render 'day_search_book' ,cnt: nil %>
+        </div>
+      </div>
     </div>
   </div>
 </div>
