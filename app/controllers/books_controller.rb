@@ -1,7 +1,9 @@
 class BooksController < ApplicationController
   before_action :currect_user, only: %i[edit update]
   def index
-    if params[:method]=="0"
+    if params[:tag_name]
+      @books = Book.tagged_with("#{params[:tag_name]}")
+    elsif params[:method]=="0"
       @books=Book.order(created_at: "DESC")
     elsif params[:method]=="1"
       @books=Book.order(star: "DESC")
