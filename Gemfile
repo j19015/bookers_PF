@@ -78,3 +78,6 @@ gem "net-imap"
 # devise
 gem 'rails-i18n'
 gem 'devise-i18n'
+
+# acts-as-taggable-on
+gem 'acts-as-taggable-on', '~> 9.0'

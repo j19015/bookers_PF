@@ -1,6 +1,5 @@
 class Book < ApplicationRecord
   belongs_to :user
-  belongs_to :tag
   has_many :favorites
   has_many :book_comments
   # いいねの多い順に表示するためにbookから簡単にいいねしたユーザの情報を取得できるようにしておく
@@ -8,6 +7,7 @@ class Book < ApplicationRecord
   validates :title, presence: true
   validates :body, presence: true
   validates :body, length: { maximum: 200 }
+  acts_as_taggable_on :tags
 
   #本日の投稿数
   scope :created_today,->{where(created_at: Time.zone.now.all_day).count}
