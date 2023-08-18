@@ -56,6 +56,11 @@
           raty(elem,opt);
         </script>
 
+        <div class="form-group">
+          <%= f.label :tag_list %>
+          <%= f.text_field :tag_list, value: book.tag_list.join(','), class: 'form-control' %>
+        </div>
+
         <%= f.submit 'Create Book',class:"btn btn-success",style:"margin:5px 0"%>
 
       <% end %>
