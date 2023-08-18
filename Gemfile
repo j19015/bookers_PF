@@ -81,3 +81,6 @@ gem 'devise-i18n'
 
 # acts-as-taggable-on
 gem 'acts-as-taggable-on', '~> 9.0'
+
+#ransack
+gem 'ransack'
