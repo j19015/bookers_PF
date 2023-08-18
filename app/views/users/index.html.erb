@@ -1,3 +1,12 @@
+<div class="d-flex justify-content-center">
+  <div class="mt-1">
+    <%= search_form_for @q, url: search_users_path do |f| %>
+      <%= f.label :name_cont, '(ransack)ユーザー名' %>
+      <%= f.search_field :name_cont %> 
+      <%= f.submit '検索' %>
+    <% end %>
+  </div>
+</div>
 <div class="container px-5 px-sm-0">
   <div class="row">
     <%= render 'users/list',user: @user,book: @book %>

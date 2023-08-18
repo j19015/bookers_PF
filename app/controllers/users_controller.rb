@@ -2,9 +2,18 @@ class UsersController < ApplicationController
   before_action :currect_user, only: %i[edit update]
   before_action :ensure_guest_user, only: [:edit]
   def index
+    @q = User.ransack(params[:q])
     @users = User.all
     @user = current_user
     @book = Book.new
+  end
+
+  def search
+    @q = User.ransack(params[:q])
+    @users = @q.result
+    @user = current_user
+    @book = Book.new
+    render :index
   end
 
   def show
