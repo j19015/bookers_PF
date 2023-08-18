@@ -8,6 +8,9 @@ Rails.application.routes.draw do
     resource :relationships, only: %i[create destroy]
     get 'followings' => 'relationships#followings', as: 'followings'
     get 'followers' => 'relationships#followers', as: 'followers'
+    collection do
+      get 'search'
+    end
   end
   resources :books do
     resource :favorites, only: %i[create destroy]

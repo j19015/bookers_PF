@@ -7,6 +7,11 @@ class UsersController < ApplicationController
     @book = Book.new
   end
 
+  def search
+    @q = User.ransack(params[:q])
+    @results = @q.result
+  end
+
   def show
     @book = Book.new
     @user = User.find(params[:id])
