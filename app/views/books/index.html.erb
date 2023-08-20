@@ -54,9 +54,13 @@
               <%= render 'favorites/favorite',book: book %>
             </td>
           </tr>
-        
         <% end %>
       </table>
+      <div class="slider">
+        <% @books.each do |book| %>
+          <%= image_tag book.user.get_profile_image(100,100), class: 'slider-item rounded' ,style:"height: 25vw;"%>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

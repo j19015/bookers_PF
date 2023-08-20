@@ -1,2 +1,17 @@
 @import '~bootstrap/scss/bootstrap';
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
+
+//buttonのstyle
+
+.slick-prev,
+.slick-next {
+  position: absolute;
+  top: 50%; /* 上から中央に配置 */
+  transform: translateY(-50%); /* 垂直方向に中央揃え */
+  font-size: 24px; /* ボタンのフォントサイズを調整 */
+  z-index: 1; /* スライドよりも手前に表示 */
+}
+
+.slick-next {
+  right: 0%;
+}

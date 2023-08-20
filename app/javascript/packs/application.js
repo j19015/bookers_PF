@@ -13,6 +13,7 @@ Rails.start()
 ActiveStorage.start()
 
 require ('user/scroll')
+require("./slick")
 
 import "jquery";
 import "popper.js";
