@@ -87,3 +87,5 @@ gem 'ransack'
 
 #google map api
 gem 'jp_prefecture'
+
+gem "geocoder"
