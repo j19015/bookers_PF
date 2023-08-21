@@ -12,14 +12,35 @@
         <% end %>
       <%= form_with model: @user do |f| %>
         <h3>Name</h3>
-        <%= f.text_field :name %>
+        <%= f.text_field :name , class: 'form-control'%>
         
         <h3>Image</h3>
         <%= f.file_field :profile_image, placeholder: "プロフィール画像", accept: "image/*" %>
         
         <h3>Introduction</h3>
-        <%= f.text_area :introduction %><br/>
-        
+        <%= f.text_area :introduction, class: 'form-control' %><br/>
+
+        <div class="field">
+          <%= f.label :postcode, '郵便番号' %>
+          <%= f.text_field :postcode, autocomplete: 'postcode', class: 'form-control' %>
+        </div>
+        <div class="field">
+          <%= f.label :prefecture_name, '都道府県' %>
+          <%= f.collection_select :prefecture_code, JpPrefecture::Prefecture.all, :code, :name, { include_blank: '選択してください', selected: current_user.prefecture_code}, class: 'form-control' %>
+        </div>
+        <div class="field">
+          <%= f.label :address_city, '市区町村' %>
+          <%= f.text_field :address_city, autocomplete: 'address_city', class: 'form-control' %>
+        </div>
+        <div class="field">
+          <%= f.label :address_street, '番地' %>
+          <%= f.text_field :address_street, autocomplete: 'address_street', class: 'form-control' %>
+        </div>
+        <div class="field">
+          <%= f.label :address_building, '建物' %>
+          <%= f.text_field :address_building, autocomplete: 'address_building', class: 'form-control' %>
+        </div>
+          
         <%= f.submit 'Update User' ,class:"btn btn-secondary mt-3" %>
         
       <% end %>

@@ -84,3 +84,6 @@ gem 'acts-as-taggable-on', '~> 9.0'
 
 #ransack
 gem 'ransack'
+
+#google map api
+gem 'jp_prefecture'

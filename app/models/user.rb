@@ -70,5 +70,21 @@ class User < ApplicationRecord
       user.name = "guestuser"
     end
   end
+
+  #google map api
+  include JpPrefecture
+  jp_prefecture :prefecture_code
   
+  def prefecture_name
+    JpPrefecture::Prefecture.find(code: prefecture_code).try(:name)
+  end
+  
+  def prefecture_name=(prefecture_name)
+    self.prefecture_code = JpPrefecture::Prefecture.find(name: prefecture_name).code
+  end
+
+  def join_address
+    "#{self.prefecture_name}#{self.address_city}#{self.address_street}#{self.address_building}"
+  end
+
 end
