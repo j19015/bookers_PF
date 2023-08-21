@@ -13,6 +13,14 @@
           <th><%= user.introduction %></th>
         </tr>
         <tr>
+          <th>郵便番号</th>
+          <th><%= user.postcode %></th>
+        </tr>
+        <tr>
+          <th>住所</th>
+          <th><%= user.join_address %></th>
+        </tr>
+        <tr>
           <th>follows</th>
           <th><%= link_to user.following_user.count,user_followings_path(user.id) %></th>
         </tr>
