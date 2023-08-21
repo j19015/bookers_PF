@@ -1,4 +1,4 @@
-<div class="ml-5">
+<div class="ml-5 w-50">
   <h2>Sign up</h2>
 
   <%= form_with model:@user,url:user_registration_path do |f| %>
@@ -6,12 +6,12 @@
 
     <div class="field">
       <%= f.label :email %><br />
-      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email",class: 'form-control'  %>
     </div>
 
     <div class="field">
       <%= f.label :name %><br />
-      <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
+      <%= f.text_field :name, autofocus: true, autocomplete: "name",class: 'form-control'  %>
     </div>
 
     <div class="field">
@@ -33,7 +33,7 @@
       <%= f.label :address_street, '番地' %>
       <%= f.text_field :address_street, autocomplete: 'address_street', class: 'form-control' %>
     </div>
-    
+
     <div class="field">
       <%= f.label :address_building, '建物' %>
       <%= f.text_field :address_building, autocomplete: 'address_building', class: 'form-control' %>
@@ -44,12 +44,12 @@
       <% if @minimum_password_length %>
       <em>(<%= @minimum_password_length %> characters minimum)</em>
       <% end %><br />
-      <%= f.password_field :password, autocomplete: "new-password" %>
+      <%= f.password_field :password, autocomplete: "new-password",class: 'form-control'  %>
     </div>
 
     <div class="field">
       <%= f.label :password_confirmation %><br />
-      <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+      <%= f.password_field :password_confirmation, autocomplete: "new-password",class: 'form-control'  %>
     </div>
 
     <div class="actions mt-3">
