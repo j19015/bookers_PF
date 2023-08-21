@@ -12,6 +12,7 @@
           <th>introduction</th>
           <th><%= user.introduction %></th>
         </tr>
+        <% if user == current_user %>
         <tr>
           <th>郵便番号</th>
           <th><%= user.postcode %></th>
@@ -23,7 +24,6 @@
         <tr>
           <th>Map</th>
           <th>
-            
             <script type="text/javascript">
               function initMap() {
                 var test ={lat: <%= user.latitude %>, lng: <%= user.longitude %>};
@@ -61,6 +61,12 @@
             <div id="map"></div>
           </th>
         </tr>
+        <% else %>
+          <tr>
+            <th>住所</th>
+            <th>表示できません</th>
+          </tr>
+        <% end %>
         <tr>
           <th>follows</th>
           <th><%= link_to user.following_user.count,user_followings_path(user.id) %></th>
