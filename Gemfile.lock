@@ -263,6 +263,8 @@ GEM
       sprockets-rails
       tilt
     semantic_range (3.0.0)
+    simple_calendar (3.0.1)
+      rails (>= 6.1)
     spring (3.1.1)
     sprockets (4.1.1)
       concurrent-ruby (~> 1.0)
@@ -333,6 +335,7 @@ DEPENDENCIES
   rubocop
   rubocop-rails
   sass-rails (>= 6)
+  simple_calendar
   spring
   sqlite3 (~> 1.4)
   turbolinks (~> 5)

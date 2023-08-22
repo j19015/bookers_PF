@@ -34,6 +34,18 @@
         <% end %>
       </table>
 
+      <div class="calender">
+        <%= month_calendar events: @user.books do |date, book| %>
+          <%= date.day %>
+
+          <% book.each do |book| %>
+            <div>
+              <%= link_to book.title, book_path(book) %>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+
       <div>
         <h2>七日間分の投稿数</h2>
         <table class="table table-bordered">
