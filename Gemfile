@@ -89,3 +89,6 @@ gem 'ransack'
 gem 'jp_prefecture'
 
 gem "geocoder"
+
+# simple calender
+gem 'simple_calendar'
