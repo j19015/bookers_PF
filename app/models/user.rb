@@ -91,4 +91,8 @@ class User < ApplicationRecord
     "#{self.prefecture_name}#{self.address_city}#{self.address_street}#{self.address_building}"
   end
 
+  def start_time
+    created_at
+  end
+
 end
