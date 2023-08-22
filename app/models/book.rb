@@ -40,4 +40,9 @@ class Book < ApplicationRecord
       Book.where('title like ?', "%#{text}%")
     end
   end
+
+  def start_time
+    created_at
+  end
+
 end

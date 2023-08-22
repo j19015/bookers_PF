@@ -4,8 +4,6 @@ class CreateBooks < ActiveRecord::Migration[6.1]
       t.string :title
       t.string :body
       t.integer :user_id
-      #simple calender
-      t.datetime :start_time
       t.timestamps
     end
   end

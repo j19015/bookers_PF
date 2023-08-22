@@ -52,7 +52,6 @@ ActiveRecord::Schema.define(version: 2023_08_18_143750) do
     t.string "title"
     t.string "body"
     t.integer "user_id"
-    t.datetime "start_time"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "impressions_count", default: 0
